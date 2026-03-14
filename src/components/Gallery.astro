@@ -1,0 +1,92 @@
+---
+import { siteData } from '../data/site';
+---
+
+<section id="galeria" class="gallery">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="section-title">El Sabor en Imágenes</h2>
+      <p class="section-subtitle">Un vistazo a nuestras delicias y el ambiente que te espera en Pacho Parrilla.</p>
+    </div>
+    
+    <div class="gallery-grid">
+      {siteData.gallery.map((img, index) => (
+        <div class={`gallery-item ${index === 0 ? 'span-2' : ''}`}>
+          <img src={img.image} alt={img.alt} loading="lazy" />
+          <div class="overlay">
+            <span>📷</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .gallery {
+    background-color: #1a1a1e;
+  }
+  
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-auto-rows: 250px;
+    gap: 1rem;
+  }
+  
+  .gallery-item {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  .gallery-item.span-2 {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  
+  @media (max-width: 768px) {
+    .gallery-item.span-2 {
+      grid-column: span 1;
+      grid-row: span 1;
+    }
+  }
+  
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(232, 90, 25, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+  }
+  
+  .overlay span {
+    font-size: 2rem;
+    color: white;
+    transform: translateY(20px);
+    transition: transform var(--transition-normal);
+  }
+  
+  .gallery-item:hover img {
+    transform: scale(1.1);
+  }
+  
+  .gallery-item:hover .overlay {
+    opacity: 1;
+  }
+  
+  .gallery-item:hover .overlay span {
+    transform: translateY(0);
+  }
+</style>

@@ -1,0 +1,90 @@
+---
+import { siteData } from '../data/site';
+---
+
+<section class="final-cta text-center">
+  <div class="container">
+    <div class="cta-content">
+      <h2 class="title">¿Listo para el verdadero sabor a la parrilla?</h2>
+      <p class="subtitle">Visítanos en Los Alpes o haz tu pedido ahora mismo. Porciones generosas y la mejor atención te esperan.</p>
+      
+      <div class="action-buttons">
+        <a href={`https://wa.me/${siteData.whatsapp}`} class="btn btn-primary" target="_blank" rel="noopener">Pedir a domicilio</a>
+        <a href={`https://maps.google.com/?q=${encodeURIComponent(siteData.address)}`} class="btn btn-outline" style="color: white; border-color: white;" target="_blank" rel="noopener">Cómo llegar</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .final-cta {
+    background: linear-gradient(135deg, var(--brand-accent) 0%, var(--brand-primary) 100%);
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Decorative elements */
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  
+  .final-cta::after {
+    content: '';
+    position: absolute;
+    bottom: -50%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(0,0,0,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  
+  .cta-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: white;
+    margin-bottom: 1.5rem;
+  }
+  
+  .subtitle {
+    font-size: 1.25rem;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 2.5rem;
+  }
+  
+  .action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .action-buttons .btn-primary {
+    background-color: white;
+    color: var(--brand-primary);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  }
+  
+  .action-buttons .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+  }
+  
+  .action-buttons .btn-outline:hover {
+    background-color: rgba(255,255,255,0.1);
+  }
+</style>

@@ -1,0 +1,108 @@
+---
+import { siteData } from '../data/site';
+---
+
+<section id="menu" class="menu-highlights">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="section-title">Nuestro Menú</h2>
+      <p class="section-subtitle">Variedad de opciones pensadas para satisfacer todos los antojos, desde la hamburguesa clásica hasta nuestro corte especial.</p>
+    </div>
+    
+    <div class="menu-grid">
+      {siteData.menuHighlights.map(category => (
+        <div class="menu-category">
+          <h3 class="category-title">{category.category}</h3>
+          <ul class="menu-list">
+            {category.items.map(item => (
+              <li class="menu-item">
+                <span class="item-icon">🔪</span>
+                <span class="item-name">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+    
+    <div class="menu-cta text-center">
+      <p>También ofrecemos Menú del día antes de las 3:00 p.m.</p>
+      <a href={`https://wa.me/${siteData.whatsapp}?text=Hola, quiero ver la carta completa`} target="_blank" rel="noopener" class="btn btn-outline">Solicitar Carta Completa</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .menu-highlights {
+    background-color: var(--bg-dark);
+    position: relative;
+  }
+  
+  .menu-highlights::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  }
+  
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    margin-bottom: 4rem;
+  }
+  
+  .menu-category {
+    background: linear-gradient(to bottom, rgba(28, 28, 32, 0.5), transparent);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    border-top: 2px solid var(--brand-primary);
+  }
+  
+  .category-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: white;
+    text-align: center;
+  }
+  
+  .menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px dashed rgba(255,255,255,0.1);
+    color: var(--text-muted);
+  }
+  
+  .menu-item:last-child {
+    border-bottom: none;
+  }
+  
+  .item-icon {
+    font-size: 0.8rem;
+    opacity: 0.7;
+  }
+  
+  .menu-cta {
+    background: rgba(232, 90, 25, 0.05);
+    padding: 2.5rem;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(232, 90, 25, 0.2);
+  }
+  
+  .menu-cta p {
+    font-size: 1.125rem;
+    color: white;
+    margin-bottom: 1.5rem;
+  }
+</style>

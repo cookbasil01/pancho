@@ -1,0 +1,174 @@
+---
+import { siteData } from '../data/site';
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>{siteData.name}</h3>
+        <p>El auténtico sabor de la parrilla en Los Alpes, Medellín.</p>
+        <div class="social-links">
+          <a href={siteData.social.instagram} target="_blank" rel="noopener" aria-label="Instagram">
+            <span class="social-icon">📷</span>
+          </a>
+          <a href={`https://wa.me/${siteData.whatsapp}`} target="_blank" rel="noopener" aria-label="WhatsApp">
+            <span class="social-icon">💬</span>
+          </a>
+        </div>
+      </div>
+      
+      <div class="footer-links">
+        <h4>Enlaces Rápidos</h4>
+        <ul>
+          <li><a href="#productos">Nuestros Favoritos</a></li>
+          <li><a href="#menu">Ver Menú</a></li>
+          <li><a href="#galeria">Galería</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-contact">
+        <h4>Atención</h4>
+        <p><strong>{siteData.hours}</strong></p>
+        <p>{siteData.address}</p>
+        <p><a href={`tel:${siteData.phone.replace(/\s+/g, '')}`}>{siteData.phone}</a></p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; {currentYear} {siteData.name}. Todos los derechos reservados.</p>
+      <p class="developer">Diseñado para alto rendimiento y conversión.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: #0c0c0e;
+    padding: 80px 0 20px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 4rem;
+  }
+  
+  .footer-brand h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: white;
+  }
+  
+  .footer-brand p {
+    color: var(--text-muted);
+    max-width: 300px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .social-links {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+    transition: all var(--transition-fast);
+  }
+  
+  .social-links a {
+    text-decoration: none;
+  }
+  
+  .social-links a:hover .social-icon {
+    background: var(--brand-primary);
+    transform: translateY(-3px);
+  }
+  
+  .footer-links h4, .footer-contact h4 {
+    color: white;
+    font-size: 1.125rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .footer-links ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-links li {
+    margin-bottom: 0.75rem;
+  }
+  
+  .footer-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+  
+  .footer-links a:hover {
+    color: var(--brand-primary);
+  }
+  
+  .footer-contact p {
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+  }
+  
+  .footer-contact a {
+    color: var(--brand-secondary);
+    text-decoration: none;
+  }
+  
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+  }
+  
+  .developer {
+    opacity: 0.7;
+  }
+  
+  @media (max-width: 992px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    
+    .footer-brand {
+      grid-column: span 2;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    
+    .footer-brand {
+      grid-column: span 1;
+    }
+    
+    .footer-bottom {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>

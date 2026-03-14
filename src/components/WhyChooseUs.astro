@@ -1,0 +1,175 @@
+---
+import { siteData } from '../data/site';
+---
+
+<section class="why-choose-us">
+  <div class="container">
+    <div class="content-wrapper">
+      <div class="text-content">
+        <h2 class="section-title">¿Por qué elegirnos?</h2>
+        <p class="section-subtitle" style="margin-left: 0;">Más que un restaurante, somos tu opción confiable en Los Alpes para disfrutar de verdadera comida a la parrilla.</p>
+        
+        <div class="features-list">
+          {siteData.features.map(feature => (
+            <div class="feature-item">
+              <div class="feature-icon">{feature.icon}</div>
+              <div class="feature-text">
+                <h3>{feature.title}</h3>
+                <p>{feature.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      <div class="image-content">
+        <div class="image-composition">
+          <!-- Main Image -->
+          <img src="/images/gallery-6.jpg" alt="Parrilla" class="img-main" loading="lazy" />
+          <!-- Accent Image -->
+          <img src="/images/gallery-5.jpg" alt="Ambiente" class="img-accent" loading="lazy" />
+          <!-- Small badge -->
+          <div class="experience-badge">
+            <span class="number">{siteData.rating}</span>
+            <span class="text">Calificación<br/>Clientes</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .why-choose-us {
+    background-color: #141416;
+    overflow: hidden;
+  }
+  
+  .content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  
+  .features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .feature-item {
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .feature-icon {
+    font-size: 1.5rem;
+    width: 48px;
+    height: 48px;
+    background: rgba(232, 90, 25, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  
+  .feature-text h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .feature-text p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin: 0;
+  }
+  
+  .image-content {
+    position: relative;
+  }
+  
+  .image-composition {
+    position: relative;
+    height: 500px;
+  }
+  
+  .img-main {
+    width: 80%;
+    height: 80%;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    position: absolute;
+    top: 0;
+    right: 0;
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .img-accent {
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border: 8px solid #141416;
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .experience-badge {
+    position: absolute;
+    bottom: 40px;
+    right: 20px;
+    background: var(--brand-primary);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: var(--shadow-glow);
+    z-index: 10;
+  }
+  
+  .experience-badge .number {
+    font-size: 1.5rem;
+    font-weight: 800;
+    font-family: var(--font-display);
+    line-height: 1;
+  }
+  
+  .experience-badge .text {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    margin-top: 4px;
+    line-height: 1.2;
+  }
+  
+  @media (max-width: 992px) {
+    .content-wrapper {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    
+    .text-content .section-subtitle {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+    
+    .text-content .section-title {
+      text-align: center;
+    }
+    
+    .image-composition {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+  }
+</style>
